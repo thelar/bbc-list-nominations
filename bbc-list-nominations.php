@@ -29,7 +29,7 @@ function print_nominations(){
             <select name="type-select" id="type-select">
                 <option selected="selected" value="">- Select type -</option>
                 <option value="trade-hero">Trade Hero</option>
-                <option value="community-project">Trade Hero</option>
+                <option value="community-project">Community Project</option>
                 <option value="top-community-prize">Top Community Prize</option>
             </select>
         </div>
