@@ -26,7 +26,7 @@ function print_nominations(){
     <form id="bbc_list_nomination_form">
         <div class="row">
             <label for="type-select">Nomination type:</label>
-            <select name="" id="">
+            <select name="type-select" id="type-select">
                 <option selected="selected" value="">- Select type -</option>
                 <option value="trade-hero">Trade Hero</option>
                 <option value="community-project">Trade Hero</option>
