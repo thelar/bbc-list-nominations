@@ -14,7 +14,7 @@ dashicons-media-text' );
 
 function bbc_list_nominations_script()
 {
-    wp_enqueue_script( 'bbc_nom_script', plugin_dir_url( __FILE__ ) . 'scripts/common.js' );
+    wp_enqueue_script( 'bbc_nom_script', plugin_dir_url( __FILE__ ) . 'scripts/common.js', ['jquery'] );
 }
 add_action('admin_enqueue_scripts', 'bbc_list_nominations_script');
 
