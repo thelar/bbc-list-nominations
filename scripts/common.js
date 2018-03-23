@@ -12,5 +12,6 @@ jQuery(document).ready(function($){
         }
         console.log(base);
         window.location.href = base;
+        return false;
     });
 });
