@@ -13,5 +13,17 @@ dashicons-media-text' );
 }
 
 function print_nominations(){
-    echo "<h1>Hello World!</h1>";
+    echo '<div class="wrap">';
+    echo "<h1>PDF nominations</h1>";
+    echo '<p>Use the drop down menu\'s below to select which nominations will appear on your PDF:</p>';
+?>
+    <label for="type-select">Nomination type:</label>
+    <select name="" id="">
+        <option selected="selected" value="">- Select type -</option>
+        <option value="trade-hero">Trade Hero</option>
+        <option value="community-project">Trade Hero</option>
+        <option value="top-community-prize">Top Community Prize</option>
+    </select>
+<?php
+    echo '</div>';
 }
