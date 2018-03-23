@@ -40,7 +40,8 @@ function print_nominations(){
                     'taxonomy' => 'nomination-region',
                     'value_field' => 'slug',
                     'id' => 'region-select',
-                    'show_option_none' => '- Select region -'
+                    'show_option_none' => '- Select region -',
+                    'option_none_value' => '',
                 ]);
             ?>
         </div><br><br>
