@@ -11,6 +11,6 @@ jQuery(document).ready(function($){
             base+= 'region/' + region + '/';
         }
         console.log(base);
-        return false;
+        window.location.href = base;
     });
 });
