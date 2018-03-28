@@ -50,3 +50,32 @@ function print_nominations(){
 <?php
     echo '</div>';
 }
+
+function do_pdf($path){
+    include plugin_dir_path(__FILE__) . 'inc/pdfcrowd.php';
+
+    $url = home_url('print-nominations/' . $path . '/');
+
+    try
+    {
+        // create an API client instance
+        $client = new \Pdfcrowd("BBC_trial", "a87cf224311a0e107a23d876857db519");
+
+        // convert a web page and store the generated PDF into a $pdf variable
+
+        $pdf = $client->convertURI($url);
+
+        // set HTTP response headers
+        header("Content-Type: application/pdf");
+        header("Cache-Control: max-age=0");
+        header("Accept-Ranges: none");
+        header("Content-Disposition: attachment; filename=\"Jewson_BBC_nominations.pdf\"");
+
+        // send the generated PDF
+        echo $pdf;
+    }
+    catch(\PdfcrowdException $why)
+    {
+        echo "Pdfcrowd Error: " . $why;
+    }
+}
