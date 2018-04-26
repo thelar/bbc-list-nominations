@@ -3,7 +3,7 @@
 Plugin Name: BBC List Nominations
 Description: Custom plugin to add an admin menu for listing and PDF'ing nominations
 Author: Kevin Price-Ward
-Version: 2.0
+Version: 2.1
 */
 add_action('admin_menu', 'test_plugin_setup_menu');
 
