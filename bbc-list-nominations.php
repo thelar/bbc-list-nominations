@@ -59,7 +59,8 @@ function do_pdf($path){
     try
     {
         // create an API client instance
-        $client = new \Pdfcrowd("BBC_trial", "a87cf224311a0e107a23d876857db519");
+        //$client = new \Pdfcrowd("BBC_trial", "a87cf224311a0e107a23d876857db519");
+        $client = new \Pdfcrowd("bbc_info", "68313bc28cb3cb84bf6bb0236b275fd4");
 
         // convert a web page and store the generated PDF into a $pdf variable
 
