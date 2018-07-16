@@ -3,7 +3,7 @@
 Plugin Name: BBC List Nominations
 Description: Custom plugin to add an admin menu for listing and PDF'ing nominations
 Author: Kevin Price-Ward
-Version: 2.1
+Version: 2.2
 */
 add_action('admin_menu', 'test_plugin_setup_menu');
 
@@ -52,31 +52,34 @@ function print_nominations(){
 }
 
 function do_pdf($path){
-    include plugin_dir_path(__FILE__) . 'inc/pdfcrowd.php';
+    if(user_can(get_current_user_id(), 'manage_options')){
+        include plugin_dir_path(__FILE__) . 'inc/pdfcrowd.php';
 
-    $url = home_url('print-nominations/' . $path . '/');
+        $url = home_url('print-nominations/' . $path . '/');
 
-    try
-    {
-        // create an API client instance
-        //$client = new \Pdfcrowd("BBC_trial", "a87cf224311a0e107a23d876857db519");
-        $client = new \Pdfcrowd("bbc_info", "68313bc28cb3cb84bf6bb0236b275fd4");
+        try
+        {
+            // create an API client instance
+            //$client = new \Pdfcrowd("BBC_trial", "a87cf224311a0e107a23d876857db519");
+            $client = new \Pdfcrowd("bbc_info", "68313bc28cb3cb84bf6bb0236b275fd4");
 
-        // convert a web page and store the generated PDF into a $pdf variable
+            // convert a web page and store the generated PDF into a $pdf variable
 
-        $pdf = $client->convertURI($url);
+            $pdf = $client->convertURI($url);
 
-        // set HTTP response headers
-        header("Content-Type: application/pdf");
-        header("Cache-Control: max-age=0");
-        header("Accept-Ranges: none");
-        header("Content-Disposition: attachment; filename=\"Jewson_BBC_nominations.pdf\"");
+            // set HTTP response headers
+            header("Content-Type: application/pdf");
+            header("Cache-Control: max-age=0");
+            header("Accept-Ranges: none");
+            header("Content-Disposition: attachment; filename=\"Jewson_BBC_nominations.pdf\"");
 
-        // send the generated PDF
-        echo $pdf;
+            // send the generated PDF
+            echo $pdf;
+        }
+        catch(\PdfcrowdException $why)
+        {
+            echo "Pdfcrowd Error: " . $why;
+        }
     }
-    catch(\PdfcrowdException $why)
-    {
-        echo "Pdfcrowd Error: " . $why;
-    }
+
 }
